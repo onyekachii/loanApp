@@ -1,0 +1,27 @@
+
+root
+	aside
+	dashboard
+	header
+	landing page (s)
+	landingpage carousel
+core
+shared
+feature
+	auth
+		changepassword
+		forgot password
+		login
+		register
+		resend verification
+		save new password
+	contact
+		contact
+		contactnavigation
+		contactperson
+	operation
+		loanApplication
+		documentsupload
+		update profile
+		view applications
+		bankupdate
