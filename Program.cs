@@ -1,8 +1,12 @@
+using loanApp.Extensions;
+using Microsoft.AspNetCore.HttpOverrides;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
+builder.Services.ConfigureCors();
 
 var app = builder.Build();
 
@@ -15,7 +19,14 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.All
+});
+
 app.UseRouting();
+app.UseCors("CorsPolicy");
+app.UseAuthorization();
 
 
 app.MapControllerRoute(
