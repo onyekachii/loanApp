@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.ConfigureCors();
+builder.Services.ConfigureRepositoryManager();
 
 var app = builder.Build();
 
