@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Microsoft.EntityFrameworkCore;
 using Repository;
 using Service.Contracts;
 using Services;
@@ -21,6 +22,10 @@ namespace loanApp.Extensions
 
         public static void ConfigureServiceManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager, ServiceManager>();
+
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
+            services.AddDbContext<LoanContext>(opts =>
+                opts.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
 
     }
 }
